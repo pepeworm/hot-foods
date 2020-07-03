@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <title>Hot Foods</title>
+
+  <!-- ! Favicon -->
+
+  <link rel="icon" href="./images/restaurant-logo.png" />
+
+  <!-- ! Font Awesome -->
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+    integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous" />
+
+  <!-- ! Smooth Scroll -->
+
+  <!-- Always get the latest version -->
+  <!-- Not recommended for production sites! -->
+
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+
+  <script>
+    var scroll = new SmoothScroll('a[href*="#"]');
+  </script>
+
+  <!-- ! Bootstrap Scripts -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+
+  <!-- ! Google Fonts-->
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+
+  <!-- ! CSS -->
+
+  <style>
+    body {
+      background-color: #f2f4f3;
+      line-height: 2;
+      font-family: "Lato", sans-serif;
+      width: 100%;
+    }
+
+    /* Heading */
+
+    .navbar {
+      border: 1px solid black;
+      width: 100%;
+    }
+
+    .nav-item {
+      font-size: 1.3rem;
+      margin: 0 1rem;
+    }
+
+    #home .container-fluid {
+      padding: 3%;
+    }
+
+    #home {
+      background-color: #dd1c1a;
+      padding: 5% 0 0;
+      line-height: 2;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      color: #fdf335;
+      font-weight: bolder;
+    }
+
+    .spicy-dish-img {
+      margin-top: 1rem;
+      display: inline-block;
+      width: 29rem;
+      height: 20.5rem;
+      border: 0.1875rem solid #f2ea7b;
+      margin-bottom: 2.5rem;
+    }
+
+    .food-btn {
+      margin: 4rem 0 0;
+    }
+
+    /* Food */
+
+    #food {
+      width: 100%;
+      padding: 7% 3% 9%;
+      text-align: center;
+    }
+
+    #food h1 {
+      color: #343a40;
+      margin-bottom: 4.5rem;
+    }
+
+    h2 {
+      font-weight: bold;
+      font-size: 2.5rem;
+      margin: 2rem 0;
+    }
+
+    .icon {
+      color: #ff4868;
+      margin-right: 1.5rem;
+      font-size: 2.5rem;
+    }
+
+    .icon:hover {
+      color: #dd1c1a;
+    }
+
+    .carousel {
+      padding: 5% 0;
+    }
+
+    .chef-pick-img {
+      border: 2px solid black;
+      width: 25rem;
+    }
+
+    .carousel-control-prev-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+    }
+
+    .carousel-control-next-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+    }
+
+    .carousel-indicators li {
+      display: inline-block;
+      margin: 0 0.3rem;
+      background-color: #969696;
+    }
+
+    .carousel-indicators {
+      margin: 3.5rem 0 0;
+    }
+
+    .carousel-indicators .active {
+      background-color: #000;
+    }
+
+    .week-specials h2 {
+      margin-top: 5rem;
+    }
+
+    .carousel-item h5,
+    p {
+      color: #4f4f4f;
+      line-height: 1.5;
+      font-family: "Lato", sans-serif;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: auto;
+    }
+
+    .chef-pick-container {
+      display: inline-block;
+      padding: 2.5rem 0.8rem 0;
+    }
+
+    .week-specials-img {
+      border: 2px solid black;
+      width: 400px;
+      height: 225px;
+    }
+
+    .week-specials-container p strike {
+      margin-right: 0.8rem;
+    }
+
+    .week-specials-container {
+      display: inline-block;
+      padding: 2.5rem 0.8rem 0;
+    }
+
+    #delivery {
+      color: #fdf335;
+      background: #dd1c1a;
+      width: 100%;
+      padding: 7% 3% 7%;
+      text-align: center;
+    }
+
+    #delivery h1 {
+      font-size: 3.5rem;
+      margin-bottom: 4.5rem;
+    }
+
+    .delivery-img {
+      width: 8rem;
+      float: left;
+    }
+
+    .time-img {
+      width: 8rem;
+      float: right;
+    }
+
+    #delivery .delivery-p {
+      color: #f2f4f3;
+      font-size: 2rem;
+      margin: 2rem 0 8rem;
+    }
+
+    .delivery-description p {
+      color: #bcbcbc;
+      font-size: 1.3rem;
+      width: 50%;
+      text-align: left;
+      line-height: 2;
+      margin-left: 10rem;
+    }
+
+    .time-description p {
+      color: #bcbcbc;
+      font-size: 1.3rem;
+      width: 50%;
+      text-align: right;
+      line-height: 2;
+      margin-right: 10rem;
+    }
+
+    .carousel-hr {
+      margin-top: 4.5rem;
+      border-color: #ff4868;
+      width: 15%;
+      border-style: dotted;
+      border-width: 1.7rem 0 0;
+    }
+
+    .carousel-hr:hover {
+      border-color: #dd1c1a;
+    }
+
+    .delivery-description hr {
+      background-color: #bcbcbc;
+      width: 10%;
+    }
+
+    .time-description hr {
+      background-color: #bcbcbc;
+      width: 10%;
+    }
+
+    .full-refund-msg {
+      text-align: left;
+    }
+
+    .delivery-description {
+      display: inline-block;
+      width: 80%;
+      margin-bottom: 2rem;
+    }
+
+    .time-description {
+      display: inline-block;
+      width: 80%;
+      margin-top: 2rem;
+    }
+
+    #delivery h4 {
+      color: #d3d3d3;
+      font-weight: 700;
+    }
+
+    .cta-download {
+      display: inline-block;
+      margin-top: 8rem;
+    }
+
+    .google-play-download {
+      color: white;
+    }
+
+    .btn {
+      margin: 1rem 0.3rem 0;
+    }
+
+    #ratings {
+      text-align: center;
+      padding: 7% 3% 7%;
+      width: 100%;
+    }
+
+    #ratings h1 {
+      color: #343a40;
+      margin-bottom: 4rem;
+    }
+
+    .ratings-intro h3 {
+      font-family: "Lato", sans-serif;
+      font-weight: 600;
+    }
+
+    .down-arrow {
+      color: #ff4868;
+      font-size: 2.5rem;
+      margin-right: 1.5rem;
+    }
+
+    .customer-reviews {
+      padding: 5%;
+    }
+
+    .reviews h3 {
+      font-weight: bold;
+    }
+
+    .customer-reviews hr {
+      margin: 4.5rem auto;
+      border-color: #a9a9a9;
+      width: 10%;
+      border-width: 1rem 0 0;
+      border-style: dotted;
+    }
+
+    .fa-star {
+      color: gold;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .reviews {
+      text-align: left;
+    }
+
+    .customer-reviews h4 {
+      line-height: 1.2;
+      font-size: 23px;
+    }
+
+    .down-arrow:hover {
+      color: #dd1c1a;
+    }
+
+    #contact {
+      text-align: center;
+      background-color: #dd1c1a;
+      padding: 7% 3% 7%;
+      width: 100%;
+    }
+
+    #contact h1 {
+      display: inline-block;
+      font-size: 3.5rem;
+      margin-bottom: 4.5rem;
+    }
+
+    .contact-p {
+      color: #f2f4f3;
+      font-size: 2rem;
+      margin: 0 0 6rem;
+    }
+
+    .email-us {
+      display: inline-block;
+      margin: auto;
+      width: 43%;
+    }
+
+    .email-us .email-btn:hover {
+      text-decoration: none;
+    }
+
+    .email-us .btn {
+      font-size: 1.3rem;
+    }
+
+    footer {
+      padding: 7%;
+      background-color: #3e3e3e;
+      text-align: center;
+    }
+
+    .footer-p {
+      color: #c8c8c8;
+      font-weight: normal;
+      font-size: 1.2rem;
+    }
+
+    .footer-link {
+      padding-bottom: 5%;
+    }
+
+    .social-media-link {
+      list-style-type: none;
+    }
+
+    .social-link {
+      color: #9597ea;
+      font-size: 1rem;
+    }
+
+    .social-link:hover {
+      text-decoration: none;
+    }
+
+    .footer-description {
+      margin-bottom: 2rem;
+      color: #c8c8c8;
+      font-size: 1.1rem;
+    }
+
+    .footer-links {
+      text-align: center;
+      position: relative;
+      right: 20px;
+    }
+
+    .app-download button {
+      display: block;
+      margin: 0.7rem auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="heading">
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+      <a class="navbar-brand brand-logo" href="#"><img src="./images/restaurant-logo.png" alt="logo" /></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item navigation-link">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item navigation-link">
+            <a class="nav-link" data-scroll href="#food">Food</a>
+          </li>
+          <li class="nav-item navigation-link">
+            <a class="nav-link" data-scroll href="#delivery">Delivery</a>
+          </li>
+          <li class="nav-item navigation-link">
+            <a class="nav-link" data-scroll href="#ratings">Ratings</a>
+          </li>
+          <li class="nav-item navigation-link">
+            <a class="nav-link" data-scroll href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Page Title -->
+
+    <section id="home">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="motto">
+              <h1>Serving you only the highest quality spicy foods</h1>
+              <a data-scroll href="#food"><button type="button" class="btn btn-lg btn-outline-light food-btn">
+                  Check out our food
+                </button></a>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="spicy-dish">
+              <img src="./images/spicy-dish.jpg" alt="spicy-dish-img" class="spicy-dish-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Food -->
+
+  <div id="food">
+    <section class="food-picks">
+      <h1>Our Food</h1>
+      <div class="chef-picks">
+        <h2><a href="#chef-pick-carousel"><em class="fas fa-thumbs-up icon"></em></a> Chef Picks</h2>
+
+        <!-- Carousel For Chef's Picks -->
+
+        <div id="chef-pick-carousel" class="carousel slide" data-ride="carousel" data-interval="5000"
+          data-pause="hover">
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-indications" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-indications" data-slide-to="1"></li>
+            <li data-target="#carousel-indications" data-slide-to="2"></li>
+            <li data-target="#carousel-indications" data-slide-to="3"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="chef-pick-img" src="./images/spicy-burger-img.jpg" alt="First Slide" />
+              <div class="container-fluid chef-pick-container">
+                <h5>Jalapeño Popper Burgers</h5>
+                <p>$4.50</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="chef-pick-img" src="./images/spicy-chicken-biscuits.jpg" alt="Second Slide" />
+              <div class="container-fluid chef-pick-container">
+                <h5>Spicy Southern Chicken Biscuits</h5>
+                <p>$3</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="chef-pick-img" src="./images/spicy-pasta.jpg" alt="Third Slide" />
+              <div class="container-fluid chef-pick-container">
+                <h5>Spicy Mexican Pasta Salad</h5>
+                <p>$4</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="chef-pick-img" src="./images/spicy-meatball.jpg" alt="Fourth Slide" />
+              <div class="container-fluid chef-pick-container">
+                <h5>Spicy Meatball Foil Packs</h5>
+                <p>$3.80</p>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#chef-pick-carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#chef-pick-carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+
+      <a href="#week-specials-top">
+        <hr class="carousel-hr"></a>
+
+      <div id="week-specials-top"></div>
+      <div class="week-specials">
+        <h2><a href="#weekly-special-carousel"><em class="fas fa-check-circle icon"></em></a> This Week's Specials</h2>
+
+        <!-- Carousel for Week Specials -->
+
+        <div id="weekly-special-carousel" class="carousel slide" data-ride="carousel" data-interval="6000"
+          data-pause="hover">
+          <ol class="carousel-indicators">
+            <li data-target="#weekly-special-carousel" data-slide-to="0"></li>
+            <li data-target="#weekly-special-carousel" data-slide-to="1"></li>
+            <li data-target="#weekly-special-carousel" data-slide-to="2"></li>
+            <li data-target="#weekly-special-carousel" data-slide-to="3"></li>
+          </ol>
+
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="./images/classic-blt.jpg" alt="First Slide" class="week-specials-img" />
+              <div class="container-fluid week-specials-container">
+                <h5>Classic BLT</h5>
+                <p><strike> $4.50 </strike> $3.50</p>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <img src="./images/tacos.jpg" alt="Second Slide" class="week-specials-img" />
+              <div class="container-fluid week-specials-container">
+                <h5>Instant Pot Chicken Tacos</h5>
+                <p><strike> $3.50 </strike> $2.50</p>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <img src="./images/thai-curry.jpg" alt="Third Slide" class="week-specials-img" />
+              <div class="container-fluid week-specials-container">
+                <h5>Thai Curry</h5>
+                <p><strike> $7 </strike> $5.50</p>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <img src="./images/buffalo-chicken-sandwich.jpg" alt="Fourth Slide" class="week-specials-img" />
+              <div class="container-fluid week-specials-container">
+                <h5>Spicy and Cheesy Buffalo Chicken Sandwich</h5>
+                <p><strike> $4.50 </strike> $3.80</p>
+              </div>
+            </div>
+          </div>
+
+          <a class="carousel-control-prev" href="#weekly-special-carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#weekly-special-carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Delivery -->
+
+  <div id="delivery">
+
+    <div class="container-fluid">
+
+      <h1>Delivery</h1>
+
+      <p class="delivery-p">Great foods delivered right to your doorstep</p>
+
+    </div>
+
+    <div class="container-fluid delivery-description">
+
+      <img src="./images/delivery-on-the-way.svg" alt="delivery-img" class="delivery-img" />
+      <p>We have some of the best delivery drivers in the world to make sure you get your order in time.</p>
+      <hr>
+
+    </div>
+
+    <div class="container-fluid time-description">
+
+      <img src="./images/stopwatch.svg" alt="stopwatch-img" class="time-img">
+      <p>We either deliver your meal within 10 minutes or you get a full refund.</p>
+      <hr>
+
+    </div>
+
+    <div class="container-fluid cta-download">
+
+      <h4>Get the Hot Foods app</h4>
+
+      <button type="button" class="btn btn-large btn-outline-light"><em class="fab fa-google-play"></em>
+        Download</button>
+
+      <button type="button" class="btn btn-large btn-dark"><em class="fab fa-apple"></em> Download</button>
+
+    </div>
+
+  </div>
+
+  <!-- Ratings -->
+
+  <div id="ratings">
+
+    <div class="container-fluid ratings-intro">
+
+      <h1>Ratings</h1>
+
+      <h3><a href="#customer-reviews-down"><em class="fas fa-angle-double-down down-arrow"></a></em> Here are some
+        reviews from some of our
+        happy customers</p>
+
+    </div>
+
+    <div class="customer-reviews" id="customer-reviews-down">
+
+      <div class="row">
+
+        <div class="reviews">
+          <h3>Rating:</h3>
+          <em class="fas fa-star"></em><em class="fas fa-star"></em><em class="fas fa-star"></em><em
+            class="fas fa-star"></em><em class="fas fa-star"></em>
+          <br>
+          <h4>I first discovered Hot Foods one day after work and decided to give it a try. The food was cheap yet
+            amazing. It's now a tradition for me to go there with my family every Sunday!</h4>
+          <p>- David</p>
+        </div>
+        <hr>
+        <div class="reviews">
+          <h3>Rating:</h3>
+          <em class="fas fa-star"></em><em class="fas fa-star"></em><em class="fas fa-star"></em><em
+            class="fas fa-star"></em><em class="fas fa-star"></em>
+          <br>
+          <h4>I was introduced to Hot Foods by a friend so I went to order the Spicy Southern Chicken Biscuits and fell
+            in love with it. I now go to Hot Foods whenever I go out to eat!</h4>
+          <p>- Jane</p>
+        </div>
+        <hr>
+        <div class="reviews">
+          <h3>Rating:</h3>
+          <em class="fas fa-star"></em><em class="fas fa-star"></em><em class="fas fa-star"></em><em
+            class="fas fa-star"></em><em class="fas fa-star"></em>
+          <br>
+          <h4>I was taking my daily walk when I saw the Hot Foods restaurant. I saw the menu and bought the Classic BLT
+            and like it a lot. I now go to Hot Foods once a week</h4>
+          <p>- Big Ed</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Contact -->
+
+  <div id="contact">
+
+    <h1>Contact</h1>
+
+    <p class="contact-p">Have an issue? Don't hesitate to contact us!</p>
+
+    <div class="email-us">
+      <a href="mailto:impworm@gmail.com" target="_blank" class="email-btn"><button type="button"
+          class="btn btn-block btn-outline-light">Email Us</button></a>
+    </div>
+
+    <p></p>
+
+  </div>
+
+  <!-- Footer -->
+
+  <footer>
+
+    <div class="container-fluid footer-link">
+
+      <div class="row">
+
+        <div class="social-media col-lg-4">
+          <h5 class="footer-description">Social Media</h5>
+          <ul class="footer-links">
+            <div class="row">
+              <div class="col-lg-12">
+                <li class="social-media-link"><a class="social-link" target="_blank"
+                    href="https://www.twitter.com">Twitter</a></li>
+              </div>
+              <div class="col-lg-12">
+                <li class="social-media-link"><a class="social-link" target="_blank"
+                    href="https://www.instagram.com">Instagram</a></li>
+              </div>
+              <div class="col-lg-12">
+                <li class="social-media-link"><a class="social-link" target="_blank"
+                    href="https://www.facebook.com">Facebook</a></li>
+              </div>
+              <div class="col-lg-12">
+                <li class="social-media-link"><a class="social-link" target="_blank"
+                    href="https://www.linkedin.com">LinkedIn</a></li>
+              </div>
+            </div>
+          </ul>
+        </div>
+
+        <div class="website-link col-lg-4">
+          <h5 class="footer-description">Our Website</h5>
+          <a href="#" class="social-link">Hot Foods Website</a>
+        </div>
+
+        <div class="app-download col-lg-4">
+          <h5 class="footer-description">Our App</h5>
+          <button type="button" class="btn btn-sm btn-outline-light"><em class="fab fa-google-play"></em>
+            Download</button>
+          <button type="button" class="btn btn-sm btn-outline-light"><em class="fab fa-apple"></em> Download</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="container-fluid copyright">
+
+      <p class="footer-p">&copy; Hot Foods 2020</p>
+
+    </div>
+
+  </footer>
+
+</body>
+
+</html>
